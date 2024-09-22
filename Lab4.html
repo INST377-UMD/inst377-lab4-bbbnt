@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4</title>
+    <style>
+        /* Styles remain unchanged */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightgrey;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .section {
+            border: 2px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .column {
+            width: 48%;
+        }
+
+        button {
+            background-color: #f8b400;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- General Section -->
+    <h1 id="main-heading">Bao Nguyen's INST 377 Lab 4</h1>
+
+    <!-- Alert Me and Change Color -->
+    <div class="two-column">
+        <!-- Alert Me Section -->
+        <div class="section column" id="alert-section">
+            <h2>Alert Me Section</h2>
+            <form id="alertForm">
+                <label for="name">Enter your name:</label>
+                <input type="text" id="name" required>
+                <button type="button" onclick="alertMe()">Alert Me</button>
+            </form>
+        </div>
+
+        <!-- Change Color Section -->
+        <div class="section column" id="color-section">
+            <h2>Change Color Section</h2>
+            <button type="button" onclick="changeColor()">Change Color</button>
+        </div>
+    </div>
+
+    <!-- Text Tester and Add Text -->
+    <div class="two-column">
+        <!-- Text Tester Section -->
+        <div class="section column" id="text-tester-section">
+            <h2>Text Tester Section</h2>
+            <form id="textTesterForm">
+                <label for="textInput">Enter some text:</label>
+                <input type="text" id="textInput">
+                <button type="button" onclick="validateText()">Validate Text</button>
+            </form>
+        </div>
+
+        <!-- Add Text Section -->
+        <div class="section column" id="add-text-section">
+            <h2>Add Text Section</h2>
+            <button type="button" onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+        // Alert Me function
+        function alertMe() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert(`Hi ${name}!`);
+            }
+        }
+
+        // Change Color function
+        let isBlue = true;
+        function changeColor() {
+            if (isBlue) {
+                document.body.style.backgroundColor = 'green';
+            } else {
+                document.body.style.backgroundColor = 'blue';
+            }
+            isBlue = !isBlue;
+        }
+
+        // Validate Text function
+        function validateText() {
+            const inputText = document.getElementById('textInput').value;
+            const validation = /^[a-zA-Z0-9\s]*$/; // This regex allows letters, numbers, and spaces
+    
+            if (validation.test(inputText)) {
+                alert('Yeah! Input is valid. No special characters found!');
+            } else {
+                alert('Special characters found! Please use only letters and numbers.');
+            }
+        }
+
+        // Add Text function - adds "Adding Text" only once
+        function addText() {
+            const heading = document.getElementById('main-heading');
+            if (!heading.innerText.includes('Adding Text')) {
+                heading.innerText += ' Adding Text';
+            }
+        }
+    </script>
+</body>
+</html>
